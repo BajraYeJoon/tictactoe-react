@@ -15,13 +15,14 @@ export function calculateWinner(blocks) {
 
     if (blocks[a] && blocks[a] === blocks[b] && blocks[a] === blocks[c]) {
       return {
-        winning: blocks[a],
+        // True if one of the patterns matches up
+        winner: blocks[a],
         winningSquare: pattern[i],
       };
     }
   }
   return {
-    winning: null,
+    winner: null,
     winningSquare: [],
   };
 }

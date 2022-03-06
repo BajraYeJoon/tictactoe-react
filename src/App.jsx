@@ -41,16 +41,22 @@ const App = () => {
 
   return (
     <div className="app">
-      <h1> TIC TAC TOE</h1>
+      <h1> TIC <span className="text-green">TAC</span> TOE</h1>
       <Messages winner={winner} board={board} isXNext={isXNext} />
       <Board
         board={board}
         handleSquareEvent={handleSquareEvent}
         winningSquare={winningSquare}
       />
-      <button onClick={() => window.location.reload(false)}>
-        Click to reload!
+      <button
+        onClick={() => window.location.reload(false)}
+        className={`btn-reset ${winner ? 'active' : ' '}`}
+      >
+        Reset the game !
       </button>
+      <div className="bg-balls" />
+
+      
     </div>
   );
 };

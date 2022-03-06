@@ -10,6 +10,7 @@ const Board = ({ board, handleSquareEvent, winningSquare }) => {
     const isWinningSquare = winningSquare.includes(position);
     return (
       <Square
+        // Props value to the Square
         value={board[position]}
         onClick={() => handleSquareEvent(position)}
         isWinningSquare={isWinningSquare}
