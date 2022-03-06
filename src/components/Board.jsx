@@ -34,6 +34,7 @@ const Board = () => {
     setIsNext(prev => !prev);
   };
 
+  // Updating the position whenever clicked
   const updateSquare = position => {
     return (
       <Square
