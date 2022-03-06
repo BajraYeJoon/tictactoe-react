@@ -1,25 +1,66 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Square from './Square';
 
+// Functional Component that handles the overall BOARD
+
 const Board = () => {
+  //Hooks to handle the changes
+  //Initialization of the arrays and setting another usestate for the second player move
+
+  const [board, setBoard] = useState(Array(9).fill(null));
+  const [isXNext, setIsNext] = useState(false);
+
+  //This event handles the position of the square clicked
+
+  const handleSquareEvent = position => {
+    //Check whether the square is already clicked!!!!
+    if (board[position]) {
+      return;
+    }
+
+    // To map the square with values
+    setBoard(prev => {
+      return prev.map((square, pos) => {
+        if (pos === position) {
+          return isXNext ? 'X' : 'O';
+        }
+
+        return square;
+      });
+    });
+
+    // Alternation of the values
+
+    setIsNext(prev => !prev);
+  };
+
+  const updateSquare = position => {
+    return (
+      <Square
+        value={board[position]}
+        onClick={() => handleSquareEvent(position)}
+      />
+    );
+  };
+
   return (
     <div className="board">
       <div className="board-row">
-        <Square value={0} />
-        <Square value={1} />
-        <Square value={2} />
+        {updateSquare(0)}
+        {updateSquare(1)}
+        {updateSquare(2)}
       </div>
 
       <div className="board-row">
-        <Square value={3} />
-        <Square value={4} />
-        <Square value={5} />
+        {updateSquare(3)}
+        {updateSquare(4)}
+        {updateSquare(5)}
       </div>
 
       <div className="board-row">
-        <Square value={6} />
-        <Square value={7} />
-        <Square value={8} />
+        {updateSquare(6)}
+        {updateSquare(7)}
+        {updateSquare(8)}
       </div>
     </div>
   );
