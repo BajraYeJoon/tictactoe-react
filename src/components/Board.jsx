@@ -3,37 +3,7 @@ import Square from './Square';
 
 // Functional Component that handles the overall BOARD
 
-const Board = () => {
-  //Hooks to handle the changes
-  //Initialization of the arrays and setting another usestate for the second player move
-
-  const [board, setBoard] = useState(Array(9).fill(null));
-  const [isXNext, setIsNext] = useState(false);
-
-  //This event handles the position of the square clicked
-
-  const handleSquareEvent = position => {
-    //Check whether the square is already clicked!!!!
-    if (board[position]) {
-      return;
-    }
-
-    // To map the square with values
-    setBoard(prev => {
-      return prev.map((square, pos) => {
-        if (pos === position) {
-          return isXNext ? 'X' : 'O';
-        }
-
-        return square;
-      });
-    });
-
-    // Alternation of the values
-
-    setIsNext(prev => !prev);
-  };
-
+const Board = ({ board, handleSquareEvent }) => {
   // Updating the position whenever clicked
   const updateSquare = position => {
     return (
