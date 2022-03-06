@@ -3,13 +3,16 @@ import Square from './Square';
 
 // Functional Component that handles the overall BOARD
 
-const Board = ({ board, handleSquareEvent }) => {
+const Board = ({ board, handleSquareEvent, winningSquare }) => {
   // Updating the position whenever clicked
+
   const updateSquare = position => {
+    const isWinningSquare = winningSquare.includes(position);
     return (
       <Square
         value={board[position]}
         onClick={() => handleSquareEvent(position)}
+        isWinningSquare={isWinningSquare}
       />
     );
   };

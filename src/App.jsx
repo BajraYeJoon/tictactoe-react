@@ -12,7 +12,7 @@ const App = () => {
   const [isXNext, setIsNext] = useState(false);
 
   // To determine the winner from the logic.jsx
-  const winner = calculateWinner(board);
+  const { winner, winningSquare } = calculateWinner(board);
 
   //message output
 
@@ -43,7 +43,14 @@ const App = () => {
     <div className="app">
       <h1> TIC TAC TOE</h1>
       <Messages winner={winner} board={board} isXNext={isXNext} />
-      <Board board={board} handleSquareEvent={handleSquareEvent} />
+      <Board
+        board={board}
+        handleSquareEvent={handleSquareEvent}
+        winningSquare={winningSquare}
+      />
+      <button onClick={() => window.location.reload(false)}>
+        Click to reload!
+      </button>
     </div>
   );
 };

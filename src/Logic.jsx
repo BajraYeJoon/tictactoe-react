@@ -14,8 +14,14 @@ export function calculateWinner(blocks) {
     const [a, b, c] = pattern[i];
 
     if (blocks[a] && blocks[a] === blocks[b] && blocks[a] === blocks[c]) {
-      return blocks[a];
+      return {
+        winning: blocks[a],
+        winningSquare: pattern[i],
+      };
     }
   }
-  return null;
+  return {
+    winning: null,
+    winningSquare: [],
+  };
 }
