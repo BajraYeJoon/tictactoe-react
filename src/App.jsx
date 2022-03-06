@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Board from './components/Board';
 import './styles/app.scss';
 import { calculateWinner } from './Logic';
+import Messages from './components/Messages';
 
 const App = () => {
   //Hooks to handle the changes
@@ -14,9 +15,6 @@ const App = () => {
   const winner = calculateWinner(board);
 
   //message output
-  const message = winner
-    ? `Winner is ${winner}`
-    : `Next player is ${isXNext ? 'X' : 'O'}`;
 
   //This event handles the position of the square clicked
   const handleSquareEvent = position => {
@@ -44,7 +42,7 @@ const App = () => {
   return (
     <div className="app">
       <h1> TIC TAC TOE</h1>
-      <h2>{message}</h2>
+      <Messages winner={winner} board={board} isXNext={isXNext} />
       <Board board={board} handleSquareEvent={handleSquareEvent} />
     </div>
   );
